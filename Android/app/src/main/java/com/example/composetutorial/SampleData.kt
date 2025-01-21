@@ -69,7 +69,48 @@ object SampleData {
         ),
         Message(
             "Jaakko",
-            "Have you tried writing build.gradle with KTS?"
+            "Hello World"
+        ),
+        Message(
+            "Jaakko",
+            """This is stupid
+            |I don't know what top do with my life
+            |I wanna go home
+            |Please""".trim()
+        ),
+        Message(
+            "Jaakko",
+            "Have you tried crying???"
+        ),
+        Message(
+            "Jaakko",
+            """How
+                |Do 
+                |You
+                |Do?
+            """.trim()
+        ),
+        Message(
+            "Jaakko",
+            """You
+            Like
+            Me
+            And
+            I 
+            Like
+            You
+            """.trim()
+        ),
+        Message(
+            "Jaakko",
+            """Come
+            And
+            Take
+            Me
+            By
+            The 
+            Hand
+            """.trim()
         ),
     )
 }
