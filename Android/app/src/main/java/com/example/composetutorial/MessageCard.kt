@@ -1,5 +1,6 @@
 package com.example.composetutorial
 
+import android.media.Image
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
@@ -24,6 +25,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+
+data class Message( val body: String, val author: String = "Guest")
 
 @Composable
 fun MessageCard(msg: Message) {

@@ -48,6 +48,14 @@ fun PreviewMessageCard() {
 
 @Preview
 @Composable
+fun PreviewStartPage() {
+    ComposeTutorialTheme {
+        StartScreen(navController = rememberNavController())
+    }
+}
+
+@Preview
+@Composable
 fun PreviewConversation() {
     ComposeTutorialTheme {
         ConversationScreen(navController = rememberNavController() ,SampleData.conversationSample)

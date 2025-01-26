@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
-data class Message(val author: String, val body: String)
+
 
 @Composable
 fun Navigation() {

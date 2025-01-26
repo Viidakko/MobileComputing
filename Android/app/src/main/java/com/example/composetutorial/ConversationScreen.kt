@@ -23,7 +23,9 @@ fun ConversationScreen(navController: NavController, messages: List<Message>) {
     ) {
         Button(
             onClick = {
-                navController.navigate(Screen.StartScreen.route)
+                navController.navigate(Screen.StartScreen.route) {
+                    popUpTo(Screen.StartScreen.route) {inclusive = true}
+                }
             },
             modifier = Modifier.align(Alignment.Start)
         ) {
