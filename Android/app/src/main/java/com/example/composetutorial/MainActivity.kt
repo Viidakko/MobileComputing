@@ -12,8 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composetutorial.ui.theme.ComposeTutorialTheme
 import SampleData
+import android.content.Context
+import androidx.collection.intSetOf
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import androidx.room.Room
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,13 +26,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeTutorialTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    Navigation()
+                    Navigation(context = this)
                 }
             }
         }
     }
 }
-
 @Preview(name = "Light Mode")
 @Preview(
     uiMode = Configuration.UI_MODE_NIGHT_YES,
@@ -40,7 +43,9 @@ fun PreviewMessageCard() {
     ComposeTutorialTheme {
         Surface {
             MessageCard(
-                msg = Message("Jaakko", "Take a look at Jetpack Compose")
+                msg = Message( "Take a look at Jetpack Compose"),
+                name = "Guest",
+                imageUri = null
             )
         }
     }
@@ -48,16 +53,8 @@ fun PreviewMessageCard() {
 
 @Preview
 @Composable
-fun PreviewStartPage() {
-    ComposeTutorialTheme {
-        StartScreen(navController = rememberNavController())
-    }
-}
-
-@Preview
-@Composable
 fun PreviewConversation() {
     ComposeTutorialTheme {
-        ConversationScreen(navController = rememberNavController() ,SampleData.conversationSample)
+        ConversationScreen(navController = rememberNavController() ,SampleData.conversationSample, LocalContext.current)
     }
 }
