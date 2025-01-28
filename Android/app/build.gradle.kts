@@ -42,16 +42,21 @@ android {
 }
 
 dependencies {
-    ksp("androidx.room:room-compiler:2.5.2")
+
     implementation("androidx.navigation:navigation-compose:2.8.5")
     implementation("androidx.navigation:navigation-fragment:2.8.5")
     implementation("androidx.navigation:navigation-ui:2.8.5")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.8.5")
     implementation("androidx.navigation:navigation-testing:2.8.5")
+
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+
     implementation("io.coil-kt.coil3:coil-compose:3.0.4")
+
     implementation ("androidx.room:room-runtime:2.5.2")
     implementation("androidx.room:room-ktx:2.5.2")
+    ksp("androidx.room:room-compiler:2.5.2")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

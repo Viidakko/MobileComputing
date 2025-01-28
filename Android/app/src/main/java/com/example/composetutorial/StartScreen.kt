@@ -23,6 +23,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -66,25 +67,34 @@ fun StartScreen(navController: NavController, context: Context) {
             updateImage = !updateImage
         }
     }
+    LaunchedEffect(Unit) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val userData = database.userDao().getUserData(1)
+            if (userData != null) {
+                name = userData.username
+            }
+        }
+    }
     Column(
         verticalArrangement = Arrangement.Top,
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 50.dp)
     ) {
-        Text(
-            text = "Welcome to MessageApp!",
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 15.dp)
-        )
         Button(
             onClick = {
                 navController.navigate(Screen.ConversationScreen.route)
             },
+            modifier = Modifier.padding(top = 15.dp)
         ) {
             Text(text = "Conversation")
         }
+        Text(
+            text = "Welcome to MessageApp!",
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(top = 25.dp, bottom = 25.dp)
+        )
         val painter = if (updateImage) {
             rememberAsyncImagePainter(imageFile)
         } else {
@@ -112,8 +122,10 @@ fun StartScreen(navController: NavController, context: Context) {
                     name = it
                 },
                 label = { Text("Enter name") },
-                singleLine = true
+                singleLine = true,
+                modifier = Modifier.align(Alignment.CenterVertically)
             )
+
 
         }
         Spacer(modifier = Modifier.height(8.dp))
