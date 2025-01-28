@@ -34,14 +34,12 @@ import java.io.File
 fun ConversationScreen(navController: NavController, messages: List<Message>, context: Context) {
     val database = remember { getDatabase(context) }
     var name by remember { mutableStateOf("Guest") }
-    var imageUri by rememberSaveable{ mutableStateOf<android.net.Uri?>(null) }
 
     LaunchedEffect(Unit) {
         CoroutineScope(Dispatchers.IO).launch {
             val userData = database.userDao().getUserData(1)
             if (userData != null) {
                 name = userData.username
-                imageUri = android.net.Uri.parse(userData.imageUri)
             }
         }
     }
@@ -66,7 +64,7 @@ fun ConversationScreen(navController: NavController, messages: List<Message>, co
         modifier = Modifier.offset(0.dp, 75.dp)
     ) {
         items(messages) { message ->
-            MessageCard(message, name, imageUri)
+            MessageCard(message, name)
         }
     }
 }

@@ -14,8 +14,7 @@ import androidx.room.RoomDatabase
 @Entity(tableName = "user_data")
 data class User (
     @PrimaryKey val id: Int = 1,
-    val username: String,
-    val imageUri: String
+    val username: String
 )
 
 @Dao

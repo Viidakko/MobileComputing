@@ -44,8 +44,7 @@ fun PreviewMessageCard() {
         Surface {
             MessageCard(
                 msg = Message( "Take a look at Jetpack Compose"),
-                name = "Guest",
-                imageUri = null
+                name = "Guest"
             )
         }
     }
