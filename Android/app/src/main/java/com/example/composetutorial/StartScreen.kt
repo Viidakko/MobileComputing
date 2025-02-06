@@ -1,6 +1,7 @@
 package com.example.composetutorial
 
 import android.content.Context
+import android.widget.Space
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -79,8 +80,8 @@ fun StartScreen(navController: NavController, context: Context) {
         verticalArrangement = Arrangement.Top,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 50.dp)
-    ) {
+            .padding(horizontal = 30.dp)
+    ) { Row {
         Button(
             onClick = {
                 navController.navigate(Screen.ConversationScreen.route)
@@ -88,6 +89,15 @@ fun StartScreen(navController: NavController, context: Context) {
             modifier = Modifier.padding(top = 15.dp)
         ) {
             Text(text = "Conversation")
+        }
+        Button(
+            onClick = {
+                navController.navigate(Screen.SettingsScreen.route)
+            },
+            modifier = Modifier.padding(top = 15.dp, start = 90.dp)
+        ) {
+            Text(text = "Settings")
+        }
         }
         Text(
             text = "Welcome to MessageApp!",
@@ -137,7 +147,7 @@ fun StartScreen(navController: NavController, context: Context) {
             },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
-            Text(text = "Save image and name")
+            Text(text = "Save name")
         }
 
     }
