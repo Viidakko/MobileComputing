@@ -1,13 +1,12 @@
 package com.example.composetutorial
 
 import android.content.Context
-import android.os.Build
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -17,8 +16,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.compose.ui.unit.dp
+import androidx.core.app.NotificationCompat
 import androidx.navigation.NavController
 
 @Composable
@@ -48,13 +47,24 @@ fun SettingsScreen(navController: NavController, context: Context) {
             Text("<-- Back")
         }
         Spacer(modifier = Modifier.height(30.dp))
-        Button(
-            onClick = {
-                requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+        Row {
+            Button(
+                onClick = {
+                    requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                }
+            ) {
+                Text("Enable notifications")
             }
-        ) {
-            Text("Enable notifications")
+            Button(
+                onClick = {
+                    sendNotification(context, "Test", "Testing")
+                    //scheduleNotification(context)
+                }
+            ) {
+                Text("Schedule Background Notification")
+            }
         }
+
     }
 }
 
