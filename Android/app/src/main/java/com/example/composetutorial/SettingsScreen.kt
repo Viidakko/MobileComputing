@@ -57,8 +57,7 @@ fun SettingsScreen(navController: NavController, context: Context) {
             }
             Button(
                 onClick = {
-                    sendNotification(context, "Test", "Testing")
-                    //scheduleNotification(context)
+                    scheduleNotification(context)
                 }
             ) {
                 Text("Schedule Background Notification")
