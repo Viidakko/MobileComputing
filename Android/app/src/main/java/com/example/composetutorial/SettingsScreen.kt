@@ -6,6 +6,7 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.os.Build
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -54,6 +55,8 @@ fun SettingsScreen(navController: NavController, context: Context) {
     var zValue by remember { mutableFloatStateOf(0f) }
     var showData by remember { mutableStateOf(false) }
 
+    var enableNoti by remember { mutableStateOf(false) }
+
     DisposableEffect(Unit) {
         val listener = object : SensorEventListener {
             override fun onSensorChanged(event: SensorEvent?) {
@@ -91,18 +94,25 @@ fun SettingsScreen(navController: NavController, context: Context) {
         Row {
             Button(
                 onClick = {
-                    requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                    }
+                    enableNoti  = if (enableNoti) {
+                        true
+                    } else {
+                        true
+                    }
                 }
             ) {
                 Text("Enable notifications")
             }
-            if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            if (enableNoti) {
                 Button(
                     onClick = {
                         scheduleNotification(context)
                     }
                 ) {
-                    Text("Schedule Background Notification")
+                    Text("Schedule Notification")
                 }
             }
         }
