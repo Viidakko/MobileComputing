@@ -2,6 +2,8 @@ package com.example.composetutorial
 
 import SampleData
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -21,6 +23,9 @@ fun Navigation(context: Context) {
         }
         composable(route = Screen.ConversationScreen.route) {
             ConversationScreen(navController = navController, SampleData.conversationSample, context)
+        }
+        composable(route = Screen.SettingsScreen.route) {
+            SettingsScreen(navController = navController, context = context)
         }
     }
 }

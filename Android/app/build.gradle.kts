@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.composetutorial"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.composetutorial"
@@ -43,11 +43,15 @@ android {
 
 dependencies {
 
+    implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.navigation:navigation-compose:2.8.5")
     implementation("androidx.navigation:navigation-fragment:2.8.5")
     implementation("androidx.navigation:navigation-ui:2.8.5")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.8.5")
     implementation("androidx.navigation:navigation-testing:2.8.5")
+    implementation("androidx.activity:activity:1.10.0")
+    implementation("androidx.activity:activity-compose:1.10.0")
+    implementation("androidx.activity:activity-ktx:1.10.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
@@ -55,6 +59,7 @@ dependencies {
 
     implementation ("androidx.room:room-runtime:2.5.2")
     implementation("androidx.room:room-ktx:2.5.2")
+    implementation(libs.androidx.work.runtime.ktx)
     ksp("androidx.room:room-compiler:2.5.2")
 
     implementation(libs.androidx.core.ktx)
